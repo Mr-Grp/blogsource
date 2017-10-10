@@ -2,7 +2,7 @@
 title: html2
 date: 2017-10-02 12:44:37
 tags: [html,前端]
-categories: 前端
+categories: html
 ---
 
 ##	1.HTML常用标签
@@ -111,12 +111,14 @@ name 名称
 8.下拉列表 
 ```
 <select  name=””>
+<optgroup label='颜色'/>
 <option>红色</option>
 <option>绿色</option>
 </select>
 ```
 常用的属性name 
 selected
+mutiple
 
 9.提交按钮 
 `<input type=”submit” value=”提交” />`
@@ -127,6 +129,16 @@ selected
 11.普通按钮
 `<input type=”button” value=”修改” /> `
 
+12.图片按钮，可以提交表单
+`<input type="image" src="1.jpg">`
+
+13.表单分组
+```
+<fieldset>
+	<legend>111</legend>
+	content
+</fieldset>
+```
 ###	1.4标签的通用属性
 body的属性
 background=”背景图片”
@@ -153,8 +165,17 @@ ANSI在日文操作系统下，代表JIS
 4.UTF-8： (多国语言编码)
 不同的字符，它会选择合适编码来进行翻译。
 
-##	3.Html5新特性与常用标签
-###	3.1文档类型设定
+##	3.header中的一些标签
+```
+	<meta name="keywords" content="">
+	<meta name='description' content="">
+	<meta http-equiv="refresh" content="number;url">
+	<link rel='icon' href="">
+	<link rel="stylesheet" href="">
+```
+
+##	4.Html5新特性与常用标签
+###	4.1文档类型设定
 1.xhtml （html4.0）文档类型的设置 
 +	过渡型 --宽松型(最常用)
 ```
@@ -179,7 +200,7 @@ ANSI在日文操作系统下，代表JIS
 html5 只有一个
 xhtml三个  过渡型  框架型 严格型
 
-###	3.2字符设定
+###	4.2字符设定
 1.html5
 ```
 <meta charset=”UTF-8” ></meta>
@@ -189,7 +210,7 @@ html5可以省略主体标签，浏览器会自动补全
 
 `<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />`
 
-###	3.3常用新标签
+###	4.3常用新标签
 header   网站的头部
 nav  网站的导航
 section  主体内容
@@ -197,12 +218,12 @@ article  文章
 aside  侧边栏
 footer  版权
 
-###	3.4表单的新增的三个
+###	4.4表单的新增的三个
 required 必填项 
 autofocus
 placeholder
 
-###	3.5新增的type属性
+###	4.5新增的type属性
 html5的写法
 email  限制用户输入的是邮箱类型
 url    限制用户输入的是url类型
@@ -216,7 +237,7 @@ tel   限制用户输入的是电话类型
 color 颜色
 range 一个滑块程序
 
-###	3.6多媒体标签
+###	4.6多媒体标签
 1.video
 ```
 <video autoplay="autoplay" controls="controls" src=""></video>

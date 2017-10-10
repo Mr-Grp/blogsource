@@ -2,7 +2,7 @@
 title: html1
 date: 2017-10-02 12:44:16
 tags: [html,前端]
-categories: 前端
+categories: html
 ---
 
 ##	1.简介
@@ -47,11 +47,14 @@ body 99% 写在该body中
 	<strong>建议使用</strong>
 3.	<i>斜体</i>
 	<em>建议使用</em>
-4.	<u>下划线</u>				
+4.	<u>下划线</u>
+	<ins>建议使用</ins>				
 5.	<sup>上标</sup>		
 6.	<sub>下标</sub>			
 7.	<big>大一号</big>			
-8.	<small>小一号</small>		
+8.	<small>小一号</small>
+9.	<s>删除</s>
+	<del>建议使用</del> 		
 ```
 
 ###	2.4排版标签
@@ -98,6 +101,7 @@ title 说明（鼠标放上时显示）
 	3.空链接：#
 	4.js链接：javascript:void(0)
 4.	锚点链接	`<a name=”top”></a>  	<a href=”#top” >跳转</a>`
+5.	`<base target="_blank">`   让所有的超链接都在新窗口打开
 
 ###	2.7图像标签
 ```
@@ -172,7 +176,7 @@ tr属性：
 行的背景色 bgcolor=”颜色值”
 行的背景图片 background=”图片的地址”
 行水平居中 align=”left//center//right”  左中 右
-行的垂直居中 valign=”top//center//bottom” 上  中  下 
+行的垂直居中 valign=”top//middle//bottom” 上  中  下 
 
 td属性
 单元格的宽度width=”数值”
@@ -181,3 +185,21 @@ td属性
 单元格的背景图片 background=”图片的地址”
 单元格左右合并 colspan=”合并的单元格数”
 单元格上下合并 rowspan=”合并的单元格数”
+
+### 2.10 marquee ###
+滚动
+```
+<marquee></marquee>
+wdith
+height
+behavior: slide/scroll/alternate
+direction: left/right/up/down
+```
+
+### 2.11 embed ###
+音乐播放器
+```
+<embed>
+src
+hidden
+```

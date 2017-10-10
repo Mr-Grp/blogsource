@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+*{ padding: 0; margin: 0; border: 0; list-style: none; }
+	body{
+		background:#ccc;
+	}
+	#header{
+		height: 100px;
+		background: blue;
+		color:white;
+		font:bold 30px/100px '黑体';
+		text-align: center;
+	}
+	#section{
+		width: 1000px;
+		height: 5000px;
+		background: #999;
+		color:white;
+		font:bold 30px/100px '黑体';
+		text-align: center;
+		margin: auto;
+	}
+	#nav{
+		
+		height: 50px;
+		margin:auto;
+		overflow: hidden;
+		background: #fff;
+		border-radius: 10px;
+		position: relative;
+	}
+	#nav span{
+		width: 83px;
+        height: 42px;
+		background:url("images/cloud.gif") no-repeat ;
+	    position: absolute;
+        left: 0;
+        top: 0;
+	}
+	#nav ul{
+		position: absolute;	
+		width: 600px;
+		height: 50px;
+		overflow: hidden;
+	}
+	#nav ul li{
+		width: 100px;
+		height: 50px;
+		float: left;
+		line-height: 50px;
+		text-align: center;
+		cursor: pointer;
+	}
+	#nav.fixed{
+		position: fixed;
+		width: 1500px;
+		top:0;
+	}
+	#aside{
+		width: 150px;
+		height: 300px;
+		background-color: pink;
+		position: absolute;
+		right: 10px;
+		top:200px;
+		color:white;
+		font:bold 30px/100px '黑体';
+		text-align: center;
+	}
+	#back{
+		background-color: black;
+		color:white;
+		font:bold 30px/60px '黑体';
+		text-align: center;
+		width: 50px;
+		height: 60px;
+		position: fixed;
+		right: 20px;
+		bottom: 30px;
+		cursor:pointer;
+		display: none;
+	}
+</style>
+<body>
+<div id='header'>
+	this is header
+</div>
+<div id='nav'>
+	<span id='cloud'></span>
+	<ul id='ul'>	
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+</div>
+<div id='section'>
+	this is content
+	<br>
+	this is content <br>
+	<br>
+	this is content
+</div>
+<div id="aside">这是广告</div>
+<div id="back">Top</div>
+
+
+
+<script type="text/javascript">
+	var back=document.getElementById('back');
+	var aside=document.getElementById('aside');
+	var content=document.getElementById('section');
+	var nav=document.getElementById('nav');
+	var span=document.getElementById('cloud');
+	var ul=document.getElementById('ul');
+	ulLi=ul.children;
+	var current=0;
+	for(var i=0;i<ulLi.length;i++){
+		ulLi[i].onmouseover=function(){
+			animate(span,this.offsetLeft);
+		}
+		ulLi[i].onmouseout=function(){
+			animate(span,current);
+		}
+		ulLi[i].onclick=function(){
+			current=this.offsetLeft;
+		}
+	}
+	onscroll=function(){
+		if(scroll().top>=100){
+			nav.className='fixed';
+			content.style.marginTop='50px';
+		}
+		if(scroll().top<100){
+			nav.className='';
+			content.style.marginTop='0';
+		}
+		animateTop(aside,scroll().top+200);
+		if(scroll().top>1000){
+			back.style.display='block';
+		}
+
+	}
+	var timer = null;
+	var target=0;
+	var leader=0;
+	top.onclick=function(){
+		timer = setInterval(function(){
+			var  speed=(target-scroll().top)/10;
+			leader=scroll().top+speed;
+			scrollTo(0,leader);
+			if(Math.abs(target-scroll().top)<=Math.abs(speed)){
+				scrollTo(0,0);
+				clearInterval(timer);
+			}
+		},10);
+	}
+	function animate(ele,target){
+		clearInterval(ele.timer);
+		ele.timer=setInterval(function(){
+			var  speed=(target-ele.offsetLeft)/10;
+			ele.style.left=ele.offsetLeft+speed+'px';
+			if(Math.abs(target-ele.offsetLeft)<=Math.abs(speed)){
+				ele.style.left=target+'px';
+				clearInterval(ele.timer);
+			}
+		},10);
+	}
+	function animateTop(ele,target){
+		clearInterval(ele.timer);
+		ele.timer=setInterval(function(){
+			var  speed=(target-ele.offsetTop)/10;
+			ele.style.top=ele.offsetTop+speed+'px';
+			if(Math.abs(target-ele.offsetTop)<=Math.abs(speed)){
+				ele.style.top=target+'px';
+				clearInterval(ele.timer);
+			}
+		},10);
+	}
+	function scroll(){
+	return {
+       "top": window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+       "left":  window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
+     }
+}
+
+</script>
+</body>
+</html>

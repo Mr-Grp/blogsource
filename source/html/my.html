@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <style type="text/css">
+    *{
+    	background-color: #ffc;
+    }
+	</style>
+    <script src="echarts.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 100%;height:600px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        var option = {
+    title: {
+        text: '技术栈'
+    },
+   // tooltip: {}
+    animationDurationUpdate: 1500,
+    animationEasingUpdate: 'quinticInOut',
+    series : [
+        {
+            type: 'graph',
+            layout: 'none',
+            symbolSize: 80,
+            //roam: true,
+
+            itemStyle: {
+			    normal: {
+			        color: '#f90',
+			        shadowBlur: 50,
+			        shadowColor: 'rgba(0, 0, 0, 0.3)'
+			        
+			    }
+			},
+            label: {
+                normal: {
+                    show: true,
+                    
+
+                }
+            },
+           // edgeSymbol: ['circle', 'arrow'],
+            edgeSymbolSize: [4, 10],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 20
+                    }
+                }
+            },
+            data: [{
+                name: '前端',
+                x: 300,
+                y: 200
+            }, {
+                name: 'html',
+                x: 400,
+                y: 27
+            }, {
+                name: 'css',
+                x: 200,
+                y: 27
+            }, {
+                name: 'js',
+                x: 100,
+                y: 200
+            }, {
+                name: 'bootstrap',
+                x: 200,
+                y: 373
+            }, {
+                name: 'jQuery',
+                x: 400,
+                y: 373
+            }, {
+                name: 'angularjs',
+                x: 500,
+                y: 200,
+            	itemStyle: {
+			        normal: {
+			            color: '#09f'
+			        }
+		   		}
+            }, {
+                name: '后端',
+                x: 1000,
+                y: 200
+            }, {
+                name: 'nodejs',
+                x: 900,
+                y: 27,
+            	itemStyle: {
+			        normal: {
+			            color: '#888'
+			        }
+		   		}
+            }, {
+                name: 'php',
+                x: 1100,
+                y: 27
+            }, {
+                name: 'mysql',
+                x: 1100,
+                y: 373
+            }, {
+                name: 'PDO',
+                x: 900,
+                y: 373
+            }, {
+                name: 'shell',
+                x: 800,
+                y: 200
+            }, {
+                name: 'thinkPHP',
+                x: 1200,
+                y: 200,
+
+            }, {
+                name: 'ajax',
+                x: 550,
+                y: 0
+            }, {
+                name: 'xml',
+                x: 600,
+                y: 100
+            }, {
+                name: '版本控制',
+                x: 600,
+                y: 400,
+            	itemStyle: {
+			        normal: {
+			            color: '#888'
+			        }
+		   		}
+            },{
+                name: 'svn',
+                x: 500,
+                y: 500,
+            	itemStyle: {
+			        normal: {
+			            color: '#888'
+			        }
+		   		}
+            },{
+                name: 'git',
+                x: 700,
+                y: 500,
+            	itemStyle: {
+			        normal: {
+			            color: '#888'
+			        }
+		   		}
+            },],
+            // links: [],
+            links: [
+            // {
+            //     source: 0,
+            //     target: 0,
+            //     symbolSize: [5, 20],
+            //     label: {
+            //         normal: {
+            //             show: true
+            //         }
+            //     },
+            //     lineStyle: {
+            //         normal: {
+            //             width: 5,
+            //             curveness: 0.2
+            //         }
+            //     }
+            // },  {
+            //     source: '节点2',
+            //     target: '节点1',
+            //     label: {
+            //         normal: {
+            //             show: true
+            //         }
+            //     },
+            //     lineStyle: {
+            //         normal: { curveness: 0.2 }
+            //     }
+            // }, 
+            {
+                source: 0,
+                target: 1
+            }, {
+                source: 0,
+                target: 2
+            }, {
+                source: 0,
+                target: 3
+            }, {
+                source: 0,
+                target: 4
+            }, {
+                source: 0,
+                target: 5
+            }, {
+                source: 0,
+                target: 6
+            }, {
+                source: 7,
+                target: 8
+            }, {
+                source: 7,
+                target: 9
+            }, {
+                source: 7,
+                target: 10
+            }, {
+                source: 7,
+                target: 11
+            }, {
+                source: 7,
+                target: 12
+            }, {
+                source: 7,
+                target: 13
+            }, {
+                source: 7,
+                target: 14
+            }, {
+                source: 7,
+                target: 15
+            }, {
+                source: 0,
+                target: 14
+            }, {
+                source: 0,
+                target: 15
+            }, {
+                source: 0,
+                target: 16
+            }, {
+                source: 7,
+                target: 16
+            },{
+                source: 16,
+                target: 17
+            }, {
+                source: 16,
+                target: 18
+            }],
+            lineStyle: {
+                normal: {
+                    opacity: 0.9,
+                    width: 2,
+                    curveness: 0
+                }
+            }
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+myChart.on('click', function (params) {
+if (params.name === '节点1') {
+
+            	  alert(000)
+                // 点击到了 graph 的 edge（边）上。
+            }
+ 	if (params.componentType === 'series') {
+        if (params.seriesType === 'graph') {
+            if (params.name === '节点1') {
+
+            	  window.oepn('http://grpblog.com/categories/')
+                // 点击到了 graph 的 edge（边）上。
+            }
+            else {
+            	  window.open('http://grpblog.com/categories/')
+                // 点击到了 graph 的 node（节点）上。
+            }
+        }
+    }
+
+});
+
+
+
+    </script>
+</body>
+</html>

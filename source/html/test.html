@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="jquery.js"></script>
+<style type="text/css">
+	*{ padding: 0; margin: 0; border: 0; list-style: none;}
+	#box{ margin:100px auto; width: 500px; height: 200px; padding: 5px; border: 1px solid #ccc;}
+	#inner{ position: relative;  width: 500px; height: 200px; overflow: hidden;}
+	#inner ul{ position: absolute; left: 0; top: 0; width: 600%;  }
+	#inner ul li{ float: left; }
+	#inner ol{ position: absolute; right: 10px; bottom: 10px;}
+	#inner ol li{ background-color: rgba(169,169,169,0.7); ;border: 1px solid #ccc; width: 5px; height: 5px; text-align: center; float: left; margin-left: 10px;border-radius: 50%; border: 3px solid #000;opacity: 0.5}
+	#inner ol li.current{background: #ccc;opacity: 0.7}
+	#inner div{ display: none;}
+	#inner div span{ width:40px; height:40px; position:absolute; left:5px; top:50%; margin-top:-20px; background:#000; cursor:pointer; font: bold 30px/40px '黑体';text-align:center; color:#fff; opacity:0.3; border:1px solid #fff; }
+    #inner #right{ right:5px; left:auto; }
+</style>
+<body>
+<div id="box">
+	<div id="inner">
+		<ul id="ul">
+			<li><img src="images/1.jpg" width="500" height="200" /></li>
+	        <li><img src="images/2.jpg" width="500" height="200" /></li>
+	        <li><img src="images/3.jpg" width="500" height="200" /></li>
+	        <li><img src="images/4.jpg" width="500" height="200" /></li>
+	        <li><img src="images/5.jpg" width="500" height="200" /></li>
+		</ul>
+		<ol>
+		</ol>
+		<div>
+			<span><</span>
+			<span id='right'>></span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var box=document.getElementById('box')
+	var inner=document.getElementById('inner')
+	var ul=inner.firstElementChild;
+	var ulLi=ul.children;
+	var ol=inner.children[1]
+	var olLi=ol.children;
+	var div=inner.lastElementChild;
+	var span=div.children;
+	var imgWidth=ulLi[0].offsetWidth;
+	var newLi=ul.firstElementChild.cloneNode(true)
+	ul.appendChild(newLi)
+	for(var i=0;i<ulLi.length-1;i++){
+		var newOlLi=document.createElement('li')
+		ol.appendChild(newOlLi);
+	}
+	olLi[0].className='current'
+    for(var i=0;i<ulLi.length-1;i++){
+    	olLi[i].index=i
+    	olLi[i].onmouseover=function(){
+    		for(var j=0;j<ulLi.length-1;j++){
+    			olLi[j].className=""
+    		}
+    		this.className='current';
+    		key=square=this.index;
+    		animate(ul,-this.index*imgWidth)
+    	}
+	}
+	var key=0;
+	var square=0;
+	function autoPlay(){
+		key++;
+		if(key>5){
+			ul.style.left=0;
+			key=1;
+		}
+		square++
+		for(var j=0;j<ulLi.length-1;j++){
+			olLi[j].className=""
+		}
+		if(square>4){
+			square=0;
+		}
+		olLi[square].className="current"
+		animate(ul,-key*imgWidth)
+	}
+	var timer1
+	box.onmouseout=function(){
+		timer1=setInterval(autoPlay,1000)
+		div.style.display='none'
+	}
+	box.onmouseover=function(){
+		clearInterval(timer1)
+		div.style.display='block'
+	}
+	span[0].onclick=function(){
+		key--;
+		if(key<0){
+			key=4;
+			ul.style.left=-5*imgWidth+'px';
+		}
+		square--;
+		if(square<0){
+			square=4;
+		}
+		for(var j=0;j<ulLi.length-1;j++){
+			olLi[j].className=""
+		}
+		olLi[square].className="current"
+
+		animate(ul,-key*imgWidth)
+	}
+	span[1].onclick=autoPlay;
+	function animate(ele,target){
+		clearInterval(ele.timer);
+		speed=target>ele.offsetLeft?10:-10;
+		ele.timer=setInterval(function(){
+			var val = target - ele.offsetLeft;
+			ele.style.left=ele.offsetLeft+speed+'px'
+			if(Math.abs(val)<Math.abs(speed)){
+				ele.style.left=target+'px';
+				clearInterval(ele.timer);
+			}
+		},10)
+	}
+</script>
+</body>
+</html>
