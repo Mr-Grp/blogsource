@@ -1,7 +1,7 @@
 ---
 title: XML
 date: 2017-09-30 21:25:22
-tags: [blog,XML,javascript,php]
+tags: [XML,javascript,php]
 categories: XML
 ---
 ##	**1.简介**

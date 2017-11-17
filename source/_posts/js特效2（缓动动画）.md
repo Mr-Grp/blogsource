@@ -1,7 +1,7 @@
 ---
 title: js特效（结构）
 date: 2017-10-05 19:29:56
-tags: [blog,javascript,特效]
+tags: [javascript,特效]
 categories: js特效
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: js特效（焦点图）
 date: 2017-10-04 20:23:23
-tags: [blog,javascript,特效]
+tags: [javascript,特效]
 categories: js特效
 ---
 

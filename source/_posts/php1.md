@@ -1,5 +1,5 @@
 ---
-title: php基础1
+title: php基础(1)
 date: 2017-10-09 22:04:02
 tags: [php,后端]
 categories: php基础

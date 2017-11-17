@@ -1,7 +1,7 @@
 ---
-title: js基础语法3
+title: js基础语法(3)
 date: 2017-10-03 18:37:06
-tags: [blog,javascript,前端]
+tags: [javascript,前端]
 categories: javascript
 ---
 ## 1.DOM ##
@@ -48,12 +48,14 @@ nextElementSibling
 
 2.设置对象的属性值
 语法: 对象.属性=新的属性值;
+class要用className
+
 
 3.直接使用.属性的方式不可以获取设置自定义属性
 getAttribute()
 setAttribute()
 removeAttribute()
-
+hasAttribute()
 
 ### 1.5 文本操作 ###
 属性：innerHTML  
@@ -88,6 +90,8 @@ cells		          (只读，table)
 insertCell(index)               (只有tr能调用)
 deleteCell(index)              (只有tr能调用)
 
+克隆
+node.cloneNode([true])		
 
 ## 2.事件编程 ##
 ### 2.1 什么是事件 ###

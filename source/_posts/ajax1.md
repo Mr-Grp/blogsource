@@ -1,7 +1,7 @@
 ---
-title: ajax1
+title: ajax(1)
 date: 2017-10-01 18:43:42
-tags: [blog,ajax,javascript,前端,php,后端,JSON]
+tags: [ajax,javascript,前端,php,后端,JSON]
 categories: ajax
 ---
 
